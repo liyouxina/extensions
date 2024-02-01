@@ -29,3 +29,12 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 
 // 第一次注入脚本时执行替换
 replaceTextOnPage();
+
+chrome.runtime.onMessage.addListener(
+    function(request, sender, sendResponse) {
+        if (request.message === "get_element_value") {
+            var elementValue = document.getElementById("yourElementId").innerText;
+            console.log("Element Value:", elementValue);
+        }
+    }
+);
